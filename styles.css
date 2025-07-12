@@ -157,10 +157,12 @@ nav ul li a:hover {
 }
 
 .name {
+    height: 72px;
     font-size: 55px;
     font-weight: 700;
     margin-bottom: 20px;
     color: var(--text-color);
+    line-height: 36px;
 }
 
 .name span {
@@ -451,9 +453,9 @@ button[type="submit"]:hover {
         flex-direction: column;
         gap: 20px;
         position: absolute;
-        top: 70px;
+        top: 78px;
         right: 40px;
-        background-color: #1b1b1b;
+         background-color: rgba(0, 0, 0, 0.5);
         padding: 20px;
         border-radius: 8px;
         width: 200px;
