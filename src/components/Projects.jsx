@@ -19,6 +19,15 @@ const projects = [
     color: 'p2',
     live: 'https://www.radhepharmacy.app',
   },
+  {
+    title: 'Shoppio',
+    tagline: 'Full-featured E-commerce App',
+    description:
+      'A complete e-commerce web application with secure user authentication, product cataloging, dynamic cart state, and a robust admin control panel — plus Razorpay payment gateway integration.',
+    tags: ['MERN Stack', 'Razorpay'],
+    color: 'p3',
+    live: 'https://shoppio-frontend.vercel.app',
+  },
 ];
 
 export default function Projects() {

@@ -8,16 +8,42 @@ export default function Contact() {
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSending(true);
-    const subject = encodeURIComponent(`Message from ${form.name}`);
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
-    );
-    window.location.href = `mailto:sy268134@gmail.com?subject=${subject}&body=${body}`;
-    setSending(false);
-    setForm({ name: '', email: '', message: '' });
+    setStatus({ type: null, text: '' });
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: 'fcf40e7e-8549-49a3-bc31-b065ee897acc',
+          name: form.name,
+          email: form.email,
+          message: form.message,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setStatus({
+          type: 'success',
+          text: 'Message sent! I\u2019ll get back to you soon.',
+        });
+        setForm({ name: '', email: '', message: '' });
+      } else {
+        setStatus({
+          type: 'error',
+          text: data.message || 'Something went wrong. Please try again.',
+        });
+      }
+    } catch {
+      setStatus({
+        type: 'error',
+        text: 'Network error. Please email me directly at sy268134@gmail.com',
+      });
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
