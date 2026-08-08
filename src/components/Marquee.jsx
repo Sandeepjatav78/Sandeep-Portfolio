@@ -16,7 +16,7 @@ export default function Marquee() {
     <div className="marquee">
       <span>
         {[...items, ...items].map((item, i) => (
-          <span key={i}>
+          <span className="marquee-item" key={i}>
             {item} <span className="star">✦</span>{' '}
           </span>
         ))}
