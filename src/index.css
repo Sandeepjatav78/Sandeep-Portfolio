@@ -41,7 +41,7 @@ a {
 .container {
   max-width: 1080px;
   margin: 0 auto;
-  padding: 0 clamp(16px, 4vw, 24px);
+  padding: 0 clamp(20px, 5vw, 24px);
 }
 
 .tag {
@@ -149,6 +149,7 @@ header {
   z-index: 50;
   background: var(--paper);
   border-bottom: var(--border);
+  border-top: var(--border);
 }
 
 .nav {
@@ -185,6 +186,38 @@ header {
   border: 2px solid var(--ink);
   background: var(--orange);
   color: #fff;
+}
+
+.nav-toggle {
+  display: none;
+  border: var(--border);
+  background: #fff;
+  width: 46px;
+  height: 40px;
+  padding: 9px 8px;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.nav-toggle span {
+  display: block;
+  height: 3px;
+  background: var(--ink);
+  transition: transform 0.15s ease;
+}
+
+.nav-toggle.open span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.open span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
 }
 
 /* ---------- hero ---------- */
@@ -350,6 +383,7 @@ section {
 .section-head {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 16px;
   margin-bottom: 32px;
 }
@@ -802,23 +836,31 @@ footer {
 
 @media (max-width: 768px) {
   section {
-    padding: 56px 0;
+    padding: 72px 0;
   }
 
   .hero {
-    padding: 56px 0 40px;
+    padding: 72px 0 48px;
   }
 
   .projects-grid {
-    gap: 24px;
+    gap: 28px;
+  }
+
+  .about-grid {
+    gap: 28px;
+  }
+
+  .exp-grid {
+    gap: 28px;
   }
 
   .card {
-    padding: 20px;
+    padding: 24px;
   }
 
   .contact-banner {
-    padding: 32px 24px;
+    padding: 40px 28px;
   }
 
   .contact-grid {
@@ -831,17 +873,36 @@ footer {
     font-size: 17px;
   }
 
+  .nav {
+    padding: 22px 24px 20px;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
   .nav-links {
     order: 3;
     width: 100%;
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    border-top: var(--border);
+    padding: 10px 0 4px;
+  }
+
+  .nav-links.open {
     display: flex;
-    justify-content: space-between;
   }
 
   .nav-links a {
     margin-left: 0;
-    font-size: 13px;
-    padding: 4px 6px;
+    font-size: 16px;
+    padding: 12px 16px;
+  }
+
+  .card {
+    box-shadow: 6px 6px 0 var(--ink);
   }
 
   .hero h1 {
@@ -858,8 +919,8 @@ footer {
   }
 
   .section-head {
-    gap: 10px;
-    margin-bottom: 24px;
+    gap: 12px;
+    margin-bottom: 28px;
   }
 
   .contact-banner h2 {
@@ -872,8 +933,17 @@ footer {
     font-size: clamp(34px, 14vw, 48px);
   }
 
+  .typewriter {
+    font-size: clamp(20px, 6.5vw, 26px);
+  }
+
   .contact-banner {
-    padding: 28px 20px;
+    padding: 36px 24px;
+    box-shadow: 6px 6px 0 var(--blue);
+  }
+
+  .contact-banner h2 {
+    font-size: clamp(30px, 8.5vw, 42px);
   }
 
   .contact-links a {
